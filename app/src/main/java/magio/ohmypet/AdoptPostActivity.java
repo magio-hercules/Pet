@@ -6,7 +6,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +22,7 @@ import android.widget.ViewFlipper;
 import java.io.IOException;
 
 import magio.ohmypet.db.SqlHelper;
+import magio.ohmypet.util.CommonUtil;
 import magio.ohmypet.util.Constants;
 
 public class AdoptPostActivity extends AppCompatActivity {
@@ -31,6 +35,7 @@ public class AdoptPostActivity extends AppCompatActivity {
 
     private Button btn_registPost;
     private Button btn_registerImage;
+    private FloatingActionButton btn_registerPost;
 
     // DB에 저장 될 속성을 입력받는다
     private EditText editName;
@@ -46,6 +51,10 @@ public class AdoptPostActivity extends AppCompatActivity {
 
     // for DB
     private SqlHelper sqlHelper;
+
+
+    // 값 셋팅시, StackOverFlow를 막기 위해서, 바뀐 변수를 저장해준다.
+    String priceStr="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,9 +137,10 @@ public class AdoptPostActivity extends AppCompatActivity {
 
     private void initHandler() {
 
-        btn_registPost = (Button)findViewById(R.id.adopt_post_register);
-        if (btn_registPost != null) {
-            btn_registPost.setOnClickListener(new Button.OnClickListener() {
+        // FAB
+        btn_registerPost = (FloatingActionButton) findViewById(R.id.fab_adopt_post);
+        if (btn_registerPost != null) {
+            btn_registerPost.setOnClickListener(new Button.OnClickListener() {
                 public void onClick(View v) {
                     // TODO 등록하기
                     // insert into 테이블명 values (값, 값, 값...);
@@ -138,6 +148,10 @@ public class AdoptPostActivity extends AppCompatActivity {
                     String price = editPrice.getText().toString();
                     String desc = editDesc.getText().toString();
 
+                    if (name.equals("")) {
+                        CommonUtil.Toast(AdoptPostActivity.this, "Title을 입력해주세요");
+                        return;
+                    }
                     String sql = "insert into " +  SqlHelper.DB_NAME + " values(null, '" + name + "', " + price + ", '" + desc + "');";
                     sqlHelper.insert(sql);
 
@@ -177,7 +191,28 @@ public class AdoptPostActivity extends AppCompatActivity {
                 return false;
             }
         });
-   }
+
+        editPrice.addTextChangedListener(new TextWatcher(){
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if(!s.toString().equals(priceStr)){     // StackOverflow를 막기위해,
+//                    if (s.length() == 0) {
+//                        priceStr = "";
+//                        return;
+//                    }
+//                    priceStr = CommonUtil.DecimalFormat().format(Long.parseLong(s.toString().replaceAll(",", "")));   // 에딧텍스트의 값을 변환하여, result에 저장.
+//                    editPrice.setText(priceStr);    // 결과 텍스트 셋팅.
+//                    editPrice.setSelection(priceStr.length());     // 커서를 제일 끝으로 보냄.
+//                }
+            }
+        });
+    }
 
 
     /*

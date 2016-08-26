@@ -89,7 +89,7 @@ public class SqlHelper extends SQLiteOpenHelper{
                     + ", price = "
                     + cursor.getInt(2)
                     + ", description = "
-                    + cursor.getInt(3)
+                    + cursor.getString(3)
                     + "\n";
         }
 
