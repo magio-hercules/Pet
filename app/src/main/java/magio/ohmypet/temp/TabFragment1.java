@@ -1,4 +1,4 @@
-package magio.ohmypet;
+package magio.ohmypet.temp;
 
 //import android.app.Fragment;
 
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import magio.ohmypet.R;
 import magio.ohmypet.model.ItemData;
 
 /**
@@ -33,7 +34,7 @@ public class TabFragment1 extends Fragment{
     private CustomAdapter adapter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab1, container, false);
+        View v = inflater.inflate(R.layout.temp_tab1, container, false);
 
 
         initModel(); //ListView에 들어갈 데이터들(위에서 ArrayList<ItemData>의 형태로 선언한 itemDatas)를 초기화하는 모듈

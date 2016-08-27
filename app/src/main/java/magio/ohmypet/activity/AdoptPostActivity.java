@@ -1,4 +1,4 @@
-package magio.ohmypet;
+package magio.ohmypet.activity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
@@ -21,6 +21,7 @@ import android.widget.ViewFlipper;
 
 import java.io.IOException;
 
+import magio.ohmypet.R;
 import magio.ohmypet.db.SqlHelper;
 import magio.ohmypet.util.CommonUtil;
 import magio.ohmypet.util.Constants;
@@ -65,8 +66,6 @@ public class AdoptPostActivity extends AppCompatActivity {
 
         initDB();
         initHandler();
-
-
     }
 
     @Override

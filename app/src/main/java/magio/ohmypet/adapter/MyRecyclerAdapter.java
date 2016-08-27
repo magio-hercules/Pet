@@ -1,4 +1,4 @@
-package magio.ohmypet;
+package magio.ohmypet.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import magio.ohmypet.R;
 import magio.ohmypet.model.ItemData;
 
 /**

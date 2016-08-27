@@ -1,4 +1,4 @@
-package magio.ohmypet;
+package magio.ohmypet.activity;
 
 //import android.app.ActionBar;
 
@@ -19,6 +19,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import magio.ohmypet.R;
+import magio.ohmypet.adapter.TabPagerAdapter;
 import magio.ohmypet.util.CommonUtil;
 
 //import android.support.design.widget.TabLayout;
@@ -26,7 +28,7 @@ import magio.ohmypet.util.CommonUtil;
 //import android.support.design.widget.TabLayout;
 
 
-public class act_main extends AppCompatActivity
+public class PetMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
@@ -53,7 +55,7 @@ public class act_main extends AppCompatActivity
     //                        .setAction("Action", null).show();
 
                     // 두번째 액티비티를 실행하기 위한 인텐트
-                    Intent intent = new Intent(act_main.this, AdoptPostActivity.class);
+                    Intent intent = new Intent(PetMainActivity.this, AdoptPostActivity.class);
 
                     // 두번째 액티비티를 실행합니다.
                     startActivity(intent);

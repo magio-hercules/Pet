@@ -1,4 +1,4 @@
-package magio.ohmypet;
+package magio.ohmypet.temp;
 
 import android.util.SparseArray;
 import android.view.View;

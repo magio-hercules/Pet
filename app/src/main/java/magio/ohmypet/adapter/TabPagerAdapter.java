@@ -1,8 +1,10 @@
-package magio.ohmypet;
+package magio.ohmypet.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import magio.ohmypet.Fragment.AdoptListFragment;
 
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -20,14 +22,11 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
         // Returning the current tabs
         switch (position) {
             case 0:
-                TabFragment2 tabFragment1 = new TabFragment2();
+                AdoptListFragment tabFragment1 = new AdoptListFragment();
                 return tabFragment1;
             case 1:
-                TabFragment2 tabFragment2 = new TabFragment2();
+                AdoptListFragment tabFragment2 = new AdoptListFragment();
                 return tabFragment2;
-            case 2:
-                TabFragment3 tabFragment3 = new TabFragment3();
-                return tabFragment3;
             default:
                 return null;
         }

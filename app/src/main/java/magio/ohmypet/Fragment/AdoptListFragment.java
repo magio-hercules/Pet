@@ -1,4 +1,4 @@
-package magio.ohmypet;
+package magio.ohmypet.Fragment;
 
 //import android.app.Fragment;
 
@@ -18,18 +18,20 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import magio.ohmypet.R;
+import magio.ohmypet.adapter.MyRecyclerAdapter;
 import magio.ohmypet.model.ItemData;
 import magio.ohmypet.util.Constants;
 
 /**
  * Created by mini on 2016-07-06.
  */
-public class TabFragment2 extends Fragment{
+public class AdoptListFragment extends Fragment{
     private RecyclerView recyclerView;
     private ArrayList<ItemData> itemDatas = null;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab2, container, false);
+        View v = inflater.inflate(R.layout.tab_adopt_post, container, false);
 
         recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
 

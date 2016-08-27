@@ -1,4 +1,4 @@
-package magio.ohmypet;
+package magio.ohmypet.temp;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import magio.ohmypet.R;
 import magio.ohmypet.model.ItemData;
 
 /**
@@ -64,7 +65,7 @@ public class CustomAdapter extends BaseAdapter {
         ViewHolder viewHolder = new ViewHolder(); //화면에서 사라진 convertView를 담아두기 위한 용도로 viewHolder를 사용
 
         if(convertView == null){ //'convertView == null' = 'convertView가 한번도 생성이 된 적 없다면'
-            convertView = layoutInflater.inflate(R.layout.list_item, parent, false); //TextView 2개를 포함하고 있는 list_item을 inflate해서 convertView에 대입
+            convertView = layoutInflater.inflate(R.layout.temp_list_item, parent, false); //TextView 2개를 포함하고 있는 list_item을 inflate해서 convertView에 대입
 
             //viewHolder를 초기화. 한번 해두면 이 position의 convertView는 다시 findViewById를 할 필요가 없어집니다.
             viewHolder.title = (TextView)convertView.findViewById(R.id.txtTitle_item);
@@ -88,7 +89,7 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item, parent, false);
+            convertView = layoutInflater.inflate(R.layout.temp_list_item, parent, false);
         }
 
         ImageView image = ViewHolderHelper.get(convertView, R.id.imageTitle_item);
