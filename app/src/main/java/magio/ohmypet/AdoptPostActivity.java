@@ -152,7 +152,12 @@ public class AdoptPostActivity extends AppCompatActivity {
                         CommonUtil.Toast(AdoptPostActivity.this, "Title을 입력해주세요");
                         return;
                     }
-                    String sql = "insert into " +  SqlHelper.DB_NAME + " values(null, '" + name + "', " + price + ", '" + desc + "');";
+
+                    if (price.equals("")) {
+                        price = "0";
+                    }
+
+                    String sql = "insert into " +  SqlHelper.DB_NAME + " values(null, '" + name + "', " + Integer.parseInt(price) + ", '" + desc + "');";
                     sqlHelper.insert(sql);
 
                     Log.i(Constants.TAG, "Insert DB sql : " + sql);
