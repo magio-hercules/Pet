@@ -9,4 +9,5 @@
     <color name="colorPrimary">#8BC34A</color>
     <color name="colorPrimaryDark">#689F38</color>
     <color name="colorAccent">#FFAB40</color>
+    <color name="OrangeA100">#FFD180</color>
 </resources>

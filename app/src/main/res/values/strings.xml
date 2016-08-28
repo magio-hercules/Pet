@@ -12,15 +12,23 @@
 
     <string name="adopt_list">분양 목록</string>
     <string name="adopt_register">분양 등록</string>
-    <string name="adopt_accept">분양 희망</string>
+    <string name="adopt_detail">분양 정보</string>
     <string name="adopt_schedule">분양 일정 관리</string>
     <string name="title_activity_adopt_post">AdoptPostActivity</string>
 
-    <!-- 분양 등록-->
+    <!-- Button -->
+    <string name="choose">이미지 선택</string>
+
+    <!-- 분양 등록 -->
     <string name="picture">사진</string>
     <string name="title">제목</string>
+    <string name="kind">품종</string>
     <string name="price">금액</string>
+    <string name="age">나이 (생후)</string>
     <string name="description">설명</string>
-    <string name="choose">이미지 선택</string>
+    <string name="remarks">특이사항</string>
+    <string name="user">분양자</string>
+    <string name="schedule">분양 일정</string>
+    <string name="position">분양 위치</string>
     <string name="register">등록하기</string>
 </resources>

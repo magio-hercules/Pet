@@ -54,10 +54,7 @@ public class PetMainActivity extends AppCompatActivity
     //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
     //                        .setAction("Action", null).show();
 
-                    // 두번째 액티비티를 실행하기 위한 인텐트
                     Intent intent = new Intent(PetMainActivity.this, AdoptPostActivity.class);
-
-                    // 두번째 액티비티를 실행합니다.
                     startActivity(intent);
                 }
             });

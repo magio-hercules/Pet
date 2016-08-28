@@ -2,6 +2,7 @@ package magio.ohmypet.Fragment;
 
 //import android.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import magio.ohmypet.R;
+import magio.ohmypet.activity.AdoptDetailActivity;
 import magio.ohmypet.adapter.MyRecyclerAdapter;
 import magio.ohmypet.model.ItemData;
 import magio.ohmypet.util.Constants;
@@ -65,6 +67,9 @@ public class AdoptListFragment extends Fragment{
                     TextView desc = (TextView) rv.getChildViewHolder(child).itemView.findViewById(R.id.txtDescription_item2);
 
                     Toast.makeText(getActivity(), txt.getText() + "\n" + desc.getText(), Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(getContext(), AdoptDetailActivity.class);
+                    startActivity(intent);
                 }
                 return false;
             }
@@ -86,7 +91,7 @@ public class AdoptListFragment extends Fragment{
         this.itemDatas = new ArrayList<ItemData>();
 
         int i;
-        for(i = 0; i < 1000; i++) {
+        for(i = 0; i < 100; i++) {
             ItemData itemData_submit = new ItemData();
             itemData_submit.setTestImage((int)(Math.random() * 6));
             itemData_submit.setTitle("Test " + i);

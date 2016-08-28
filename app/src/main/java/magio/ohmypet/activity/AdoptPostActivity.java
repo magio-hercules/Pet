@@ -111,8 +111,6 @@ public class AdoptPostActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-
-
         editName = (EditText) findViewById(R.id.adopt_post_title);
         editPrice = (EditText) findViewById(R.id.adopt_post_price);
         editDesc = (EditText) findViewById(R.id.adopt_post_desc);
