@@ -9,7 +9,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        android:id="@+id/adopt_detail_scroll">
 
         <android.support.v7.widget.CardView
             card_view:cardCornerRadius="2dp"
@@ -27,7 +28,7 @@
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
                 android:orientation="vertical"
-                tools:context=".activity.AdoptPostActivity">
+                tools:context=".activity.AdoptDetailActivity">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -38,7 +39,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/picture"
-                        android:id="@+id/adopt_post_picture_" />
+                        android:id="@+id/adopt_detail_picture_" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -47,12 +48,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/choose"
-                            android:id="@+id/adopt_post_register_image"/>
+                            android:id="@+id/adopt_detail_register_image"/>
                         <ViewFlipper
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="150dp"
-                            android:id="@+id/adopt_post_image_view" >
+                            android:id="@+id/adopt_detail_image_view" >
                             <ImageView android:id="@+id/imageView1" android:scaleType="matrix"
                                 android:layout_gravity="center"
                                 android:layout_width="wrap_content" android:layout_height="wrap_content" />
@@ -75,11 +76,11 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/title"
-                        android:id="@+id/adopt_post_title_" />
+                        android:id="@+id/adopt_detail_title_" />
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_title"
+                        android:id="@+id/adopt_detail_title"
                         android:layout_weight="1"
                         android:elegantTextHeight="false"
                         android:singleLine="true" />
@@ -89,10 +90,10 @@
                     android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/kind" android:id="@+id/adopt_post_kind_" />
+                        android:text="@string/kind" android:id="@+id/adopt_detail_kind_" />
                     <EditText
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_kind" android:layout_weight="1"
+                        android:id="@+id/adopt_detail_kind" android:layout_weight="1"
                         android:singleLine="true" />
                 </LinearLayout>
 
@@ -105,11 +106,11 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/price"
-                        android:id="@+id/adopt_post_price_" />
+                        android:id="@+id/adopt_detail_price_" />
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_price"
+                        android:id="@+id/adopt_detail_price"
                         android:layout_weight="1"
                         android:singleLine="true"
                         android:numeric="integer"/>
@@ -119,17 +120,17 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_gravity="right"
                         android:text="원"
-                        android:id="@+id/adopt_post_price_won" />
+                        android:id="@+id/adopt_detail_price_won" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/age" android:id="@+id/adopt_post_age_" />
+                        android:text="@string/age" android:id="@+id/adopt_detail_age_" />
                     <EditText
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_age" android:layout_weight="1"
+                        android:id="@+id/adopt_detail_age" android:layout_weight="1"
                         android:singleLine="true" />
                 </LinearLayout>
 
@@ -142,11 +143,11 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/description"
-                        android:id="@+id/adopt_post_desc_" />
+                        android:id="@+id/adopt_detail_desc_" />
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_desc"
+                        android:id="@+id/adopt_detail_desc"
                         android:layout_weight="1"
                         android:inputType="textMultiLine"
                         android:gravity="top"/>
@@ -156,10 +157,10 @@
                     android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/remarks" android:id="@+id/adopt_post_remarks_" />
+                        android:text="@string/remarks" android:id="@+id/adopt_detail_remarks_" />
                     <EditText
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_remarks" android:layout_weight="1"
+                        android:id="@+id/adopt_detail_remarks" android:layout_weight="1"
                         android:singleLine="true" />
                 </LinearLayout>
 
@@ -167,10 +168,10 @@
                     android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/user" android:id="@+id/adopt_post_user_" />
+                        android:text="@string/user" android:id="@+id/adopt_detail_user_" />
                     <EditText
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_user" android:layout_weight="1"
+                        android:id="@+id/adopt_detail_user" android:layout_weight="1"
                         android:singleLine="true" />
                 </LinearLayout>
 
@@ -178,32 +179,28 @@
                     android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/schedule" android:id="@+id/adopt_post_schedule_" />
+                        android:text="@string/schedule" android:id="@+id/adopt_detail_schedule_" />
                     <DatePicker
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_date"></DatePicker>
+                        android:id="@+id/adopt_detail_date"></DatePicker>
                     <TimePicker
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/adopt_post_time"></TimePicker>
+                        android:id="@+id/adopt_detail_time"></TimePicker>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/position" android:id="@+id/adopt_post_position_" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Map 영역"
-                        android:layout_marginLeft="8dp"/>
-                    <!--<fragment-->
-                    <!--android:id="@+id/map"-->
-                    <!--android:name="com.example.GoogleMapVersion2.Fragment"-->
-                    <!--android:layout_width="fill_parent"-->
-                    <!--android:layout_height="fill_parent"-->
-                    <!--class="com.google.android.gms.maps.SupportMapFragment" />-->
+                        android:text="@string/position" android:id="@+id/adopt_detail_position_" />
+                    <fragment
+                        android:id="@+id/adopt_detail_map"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_gravity="center"
+                        android:name="magio.ohmypet.Fragment.CustomMapFragment" />
                 </LinearLayout>
 
                 <LinearLayout  android:orientation="horizontal"
@@ -229,7 +226,7 @@
         android:layout_margin="8dp"
         >
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_adopt_post"
+            android:id="@+id/fab_adopt_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"

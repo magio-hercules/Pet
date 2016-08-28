@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:id="@+id/adopt_post_scroll"
         >
 
         <android.support.v7.widget.CardView
@@ -192,20 +193,16 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/position" android:id="@+id/adopt_post_position_" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Map 영역"
-                        android:layout_marginLeft="8dp"/>
-                    <!--<fragment-->
-                        <!--android:id="@+id/map"-->
-                        <!--android:name="com.example.GoogleMapVersion2.Fragment"-->
-                        <!--android:layout_width="fill_parent"-->
-                        <!--android:layout_height="fill_parent"-->
-                        <!--class="com.google.android.gms.maps.SupportMapFragment" />-->
+                    <fragment
+                        android:id="@+id/adopt_post_map"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_gravity="center"
+                        android:name="magio.ohmypet.Fragment.CustomMapFragment" />
                 </LinearLayout>
 
                 <LinearLayout  android:orientation="horizontal"

@@ -7,20 +7,28 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.DragEvent;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.google.android.gms.maps.GoogleMap;
+
 import java.io.IOException;
 
+import magio.ohmypet.Fragment.CustomMapFragment;
 import magio.ohmypet.R;
 import magio.ohmypet.db.SqlHelper;
 import magio.ohmypet.util.CommonUtil;
@@ -53,19 +61,28 @@ public class AdoptPostActivity extends AppCompatActivity {
     // for DB
     private SqlHelper sqlHelper;
 
+    ScrollView scrollViewPost;
 
     // 값 셋팅시, StackOverFlow를 막기 위해서, 바뀐 변수를 저장해준다.
     String priceStr="";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adopt_post);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         initialize();
+
+        initActionBar();
 
         initDB();
         initHandler();
+
+        initMap();
     }
 
     @Override
@@ -110,12 +127,28 @@ public class AdoptPostActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            this.finish();
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
     private void initialize() {
         editName = (EditText) findViewById(R.id.adopt_post_title);
         editPrice = (EditText) findViewById(R.id.adopt_post_price);
         editDesc = (EditText) findViewById(R.id.adopt_post_desc);
     }
 
+    private void initActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(true);
+
+        actionBar.setTitle(R.string.adopt_post);
+    }
     private void initDB() {
         try {
             sqlHelper = new SqlHelper(getApplicationContext(), "pet.db", null, 1);
@@ -216,6 +249,19 @@ public class AdoptPostActivity extends AppCompatActivity {
         });
     }
 
+
+    public void initMap() {
+        scrollViewPost = (ScrollView)findViewById(R.id.adopt_post_scroll);
+
+        // Google map init block
+        CustomMapFragment customMapFragmentPost = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.adopt_post_map));
+        customMapFragmentPost.setOnTouchListener(new CustomMapFragment.OnTouchListener(){
+            @Override
+            public void onTouch() {
+                scrollViewPost.requestDisallowInterceptTouchEvent(true);
+            }
+        });
+    }
 
     /*
      * 비트맵(Bitmap) 이미지의 가로, 세로 이미지를 리사이징
