@@ -4,7 +4,9 @@ package magio.ohmypet.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,13 +31,17 @@ import magio.ohmypet.util.Constants;
  * Created by mini on 2016-07-06.
  */
 public class AdoptListFragment extends Fragment{
+
+    private SwipeRefreshLayout swipeLayout;
     private RecyclerView recyclerView;
+
     private ArrayList<ItemData> itemDatas = null;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab_adopt_post, container, false);
+        View v = inflater.inflate(R.layout.activity_adopt_list, container, false);
 
-        recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
+        swipeLayout = (SwipeRefreshLayout)v.findViewById(R.id.adopt_list_swipe_layout);
+        recyclerView = (RecyclerView)v.findViewById(R.id.adopt_list_recyclerView);
 
         initModel();
         initData();
@@ -48,7 +54,32 @@ public class AdoptListFragment extends Fragment{
         });
 
 
+        swipeLayout.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
+        );
+
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // TODO, 새로고침
+
+                // for test
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        swipeLayout.setRefreshing(false);
+                    }
+                }, 5000);
+            }
+        });
+
+
+
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                 Log.d(Constants.TAG, "onInterceptTouchEvent");
@@ -88,7 +119,7 @@ public class AdoptListFragment extends Fragment{
     }
 
     private void initModel() {
-        this.itemDatas = new ArrayList<ItemData>();
+        itemDatas = new ArrayList<ItemData>();
 
         int i;
         for(i = 0; i < 100; i++) {
@@ -106,7 +137,4 @@ public class AdoptListFragment extends Fragment{
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
-
-
-
 }
