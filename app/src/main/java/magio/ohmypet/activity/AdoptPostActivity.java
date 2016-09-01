@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -21,12 +22,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.io.IOException;
 
 import magio.ohmypet.Fragment.CustomMapFragment;
 import magio.ohmypet.R;
+import magio.ohmypet.adapter.CustomPagerAdapter;
 import magio.ohmypet.db.SqlHelper;
 import magio.ohmypet.util.CommonUtil;
 import magio.ohmypet.util.Constants;
@@ -63,6 +66,15 @@ public class AdoptPostActivity extends AppCompatActivity {
     // 값 셋팅시, StackOverFlow를 막기 위해서, 바뀐 변수를 저장해준다.
     String priceStr="";
 
+    int[] mResources = {
+            R.drawable.i,
+            R.drawable.h,
+            R.drawable.g,
+            R.drawable.f
+    };
+
+    CustomPagerAdapter mCustomPagerAdapter;
+    ViewPager mViewPager;
 
 
     @Override
@@ -80,6 +92,12 @@ public class AdoptPostActivity extends AppCompatActivity {
         initHandler();
 
         initMap();
+
+        mCustomPagerAdapter = new CustomPagerAdapter(this, mResources);
+
+        mViewPager = (ViewPager) findViewById(R.id.adopt_post_pager);
+        mViewPager.setAdapter(mCustomPagerAdapter);
+
     }
 
     @Override
