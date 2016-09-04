@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import magio.ohmypet.R;
 import magio.ohmypet.adapter.TabPagerAdapter;
+import magio.ohmypet.model.Model_adopt;
 import magio.ohmypet.util.CommonUtil;
 
 //import android.support.design.widget.TabLayout;
@@ -187,10 +188,13 @@ public class PetMainActivity extends AppCompatActivity
             }
 
         });
-
-
     }
 
+    public void refresh(Model_adopt obj) {
+        // TODO
+
+        CommonUtil.Toast(PetMainActivity.this, "PetMainActivity refresh() 성공");
+    }
 
 }
 

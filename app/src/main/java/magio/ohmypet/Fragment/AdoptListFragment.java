@@ -2,6 +2,7 @@ package magio.ohmypet.Fragment;
 
 //import android.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,12 +27,14 @@ import magio.ohmypet.activity.AdoptDetailActivity;
 import magio.ohmypet.adapter.MyRecyclerAdapter;
 import magio.ohmypet.model.ItemData;
 import magio.ohmypet.util.Constants;
+import magio.ohmypet.util.Get;
 
 /**
  * Created by mini on 2016-07-06.
  */
 public class AdoptListFragment extends Fragment{
 
+    private Context context;
     private SwipeRefreshLayout swipeLayout;
     private RecyclerView recyclerView;
 
@@ -40,11 +43,14 @@ public class AdoptListFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_adopt_list, container, false);
 
+        context = v.getContext();
         swipeLayout = (SwipeRefreshLayout)v.findViewById(R.id.adopt_list_swipe_layout);
         recyclerView = (RecyclerView)v.findViewById(R.id.adopt_list_recyclerView);
 
         initModel();
         initData();
+
+        refresh();
 
         final GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
             @Override
@@ -136,5 +142,14 @@ public class AdoptListFragment extends Fragment{
         recyclerView.setAdapter(new MyRecyclerAdapter(itemDatas, R.layout.card_item));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+    public void refresh() {
+        try {
+            Get getAdoption = new Get(context);
+            getAdoption.execute("http://52.79.196.78:3000/v1/pet/adoption");
+        } catch (Exception e) {
+            Toast.makeText(context, "서버 접속에 실패 하였습니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

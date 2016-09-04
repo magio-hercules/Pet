@@ -33,6 +33,7 @@ import magio.ohmypet.adapter.CustomPagerAdapter;
 import magio.ohmypet.db.SqlHelper;
 import magio.ohmypet.util.CommonUtil;
 import magio.ohmypet.util.Constants;
+import magio.ohmypet.util.Post;
 
 public class AdoptPostActivity extends AppCompatActivity {
 
@@ -207,6 +208,17 @@ public class AdoptPostActivity extends AppCompatActivity {
 
                     Log.i(Constants.TAG, "Insert DB sql : " + sql);
                     tvResult.setText( sqlHelper.PrintData() );
+
+                    // POST
+                    Post client = new Post();
+                    client.mContext = v.getContext();
+//                    String mReceiver = editTextReceiver.getText().toString();
+//                    String mTitle = editTextTitle.getText().toString();
+//                    String mMsg = editTextMsg.getText().toString();
+                    String pet = "";
+                    String user = "";
+
+                    client.execute("http://52.79.196.78:3000v/1/pet", pet, user, price);
                 }
             });
         }
