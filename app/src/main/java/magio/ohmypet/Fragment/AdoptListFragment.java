@@ -26,8 +26,9 @@ import magio.ohmypet.R;
 import magio.ohmypet.activity.AdoptDetailActivity;
 import magio.ohmypet.adapter.MyRecyclerAdapter;
 import magio.ohmypet.model.ItemData;
+import magio.ohmypet.model.Model_adopt;
 import magio.ohmypet.util.Constants;
-import magio.ohmypet.util.Get;
+import magio.ohmypet.util.GetTask;
 
 /**
  * Created by mini on 2016-07-06.
@@ -36,6 +37,7 @@ public class AdoptListFragment extends Fragment{
 
     private Context context;
     private SwipeRefreshLayout swipeLayout;
+    private MyRecyclerAdapter adapter;
     private RecyclerView recyclerView;
 
     private ArrayList<ItemData> itemDatas = null;
@@ -139,17 +141,31 @@ public class AdoptListFragment extends Fragment{
     }
 
     private void initData(){
-        recyclerView.setAdapter(new MyRecyclerAdapter(itemDatas, R.layout.card_item));
+        adapter = new MyRecyclerAdapter(itemDatas, R.layout.card_item);
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     public void refresh() {
         try {
-            Get getAdoption = new Get(context);
-            getAdoption.execute("http://52.79.196.78:3000/v1/pet/adoption");
+            GetTask getAdoption = new GetTask(context);
+            getAdoption.execute(Constants.SERVER + "/adoption");
         } catch (Exception e) {
             Toast.makeText(context, "서버 접속에 실패 하였습니다.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void addItem(Model_adopt obj) {
+        Log.d(Constants.TAG, "AdoptListFragment addItem()");
+
+        ItemData item = new ItemData();
+        item.setTestImage((int)(Math.random() * 6));
+        item.setTitle(obj.getTitle());
+        item.setDesc(obj.getPrice());
+
+        itemDatas.add(0, item);
+
+        adapter.notifyDataSetChanged();
     }
 }

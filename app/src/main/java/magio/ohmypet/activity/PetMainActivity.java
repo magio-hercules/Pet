@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import magio.ohmypet.Fragment.AdoptListFragment;
 import magio.ohmypet.R;
 import magio.ohmypet.adapter.TabPagerAdapter;
 import magio.ohmypet.model.Model_adopt;
@@ -39,6 +40,8 @@ public class PetMainActivity extends AppCompatActivity
     private ViewPager viewPager;
 
     private long lastTimeBackPressed;
+
+    TabPagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +167,7 @@ public class PetMainActivity extends AppCompatActivity
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         // Creating TabPagerAdapter adapter
-        TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -191,9 +194,18 @@ public class PetMainActivity extends AppCompatActivity
     }
 
     public void refresh(Model_adopt obj) {
-        // TODO
+        CommonUtil.Toast(PetMainActivity.this, "PetMainActivity refresh()");
 
-        CommonUtil.Toast(PetMainActivity.this, "PetMainActivity refresh() 성공");
+        // TODO
+    }
+
+    public void addData(Model_adopt obj) {
+        CommonUtil.Toast(PetMainActivity.this, "PetMainActivity addData()");
+
+        // TODO
+//        AdoptListFragment fragment = (AdoptListFragment)pagerAdapter.getItem(Constants.PAGE_ADOPT_LIST);
+        AdoptListFragment fragment = pagerAdapter.getAdoptList();
+        fragment.addItem(obj);
     }
 
 }

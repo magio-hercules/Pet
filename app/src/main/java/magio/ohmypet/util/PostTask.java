@@ -17,7 +17,7 @@ import magio.ohmypet.model.Model_adopt;
 /**
  * Created by kjmhe on 2016-09-04.
  */
-public class Post extends AsyncTask<String, Void, Integer> {
+public class PostTask extends AsyncTask<String, Void, Integer> {
 
     public Context mContext;
     private final String  TAG = "[LettleBoard]";

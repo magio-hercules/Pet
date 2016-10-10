@@ -22,7 +22,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.io.IOException;
@@ -33,7 +32,7 @@ import magio.ohmypet.adapter.CustomPagerAdapter;
 import magio.ohmypet.db.SqlHelper;
 import magio.ohmypet.util.CommonUtil;
 import magio.ohmypet.util.Constants;
-import magio.ohmypet.util.Post;
+import magio.ohmypet.util.PostTask;
 
 public class AdoptPostActivity extends AppCompatActivity {
 
@@ -210,7 +209,7 @@ public class AdoptPostActivity extends AppCompatActivity {
                     tvResult.setText( sqlHelper.PrintData() );
 
                     // POST
-                    Post client = new Post();
+                    PostTask client = new PostTask();
                     client.mContext = v.getContext();
 //                    String mReceiver = editTextReceiver.getText().toString();
 //                    String mTitle = editTextTitle.getText().toString();

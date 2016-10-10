@@ -19,12 +19,11 @@ import java.net.URL;
 import magio.ohmypet.activity.PetMainActivity;
 import magio.ohmypet.model.Model_adopt;
 
-public class Get extends AsyncTask<String, Void, JSONArray> {
+public class GetTask extends AsyncTask<String, Void, JSONArray> {
 
     private Context mContext;
-    private final String  TAG = "[LettleBoard]";
 
-    public Get (Context context){
+    public GetTask(Context context){
         mContext = context;
     }
 
@@ -42,7 +41,7 @@ public class Get extends AsyncTask<String, Void, JSONArray> {
 
         try {
             url = new URL(params[0]);
-            Log.d(TAG, "[GetLettle] Request URL : " + params[0]);
+            Log.d(Constants.TAG, "Request URL : " + params[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);
@@ -51,7 +50,7 @@ public class Get extends AsyncTask<String, Void, JSONArray> {
             conn.connect();
 
             responseConde = conn.getResponseCode();
-            Log.d(TAG, "[GetLettle] Response Code : " + responseConde);
+            Log.d(Constants.TAG, "Response Code : " + responseConde);
 
             OutputStream os   = null;
             InputStream is   = null;
@@ -72,10 +71,10 @@ public class Get extends AsyncTask<String, Void, JSONArray> {
             }
         }
         catch (IOException e) {
-            Log.d(TAG , "[GetLettle] IOException - " + e.toString());
+            Log.d(Constants.TAG , "IOException - " + e.toString());
         }
         catch (JSONException e) {
-            Log.d(TAG ,"[GetLettle] JSONException - " + e.toString());
+            Log.d(Constants.TAG ,"JSONException - " + e.toString());
         }
 
         return responseJSON;
@@ -85,7 +84,6 @@ public class Get extends AsyncTask<String, Void, JSONArray> {
     protected void onPostExecute(JSONArray result) {
         try {
             PetMainActivity mainActivity = (PetMainActivity) mContext;
-//            if(mainActivity.myLettle != null) mainActivity.myLettle.clear();
 
             if(result != null) {
                 for (int i = 0; i < result.length(); i++) {
@@ -93,14 +91,15 @@ public class Get extends AsyncTask<String, Void, JSONArray> {
                     Model_adopt adoptObj = new Model_adopt(jObj);
 //                    mainActivity.myLettle.add(myObj);
 //                    Log.d(TAG, "[GetLettle] onPostExecute : " + myObj.getReceiversId(0));
+                    mainActivity.addData(adoptObj);
                 }
-                mainActivity.refresh(adoptObj);
+//                mainActivity.refresh(adoptObj);
             } else {
                 Toast.makeText(mContext, "서버 접속에 실패 하였습니다.", Toast.LENGTH_SHORT).show();
             }
 
         } catch (Exception e) {
-            Log.d(TAG, "[GetLettle] JSONException - " + e.toString());
+            Log.d(Constants.TAG, "JSONException - " + e.toString());
             Toast.makeText(mContext, "서버와의 통신에서 알수 없는 오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
         }
 

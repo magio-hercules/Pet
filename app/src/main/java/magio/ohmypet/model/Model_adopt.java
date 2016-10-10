@@ -3,27 +3,25 @@ package magio.ohmypet.model;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.google.android.gms.drive.Contents;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import magio.ohmypet.util.Constants;
 
 /**
  * Created by mini on 2016-08-22.
  */
 public class Model_adopt implements Serializable {
-    ImageView picture;
     String title;
-    int price;
+    String price;
 
     Model_User user;
     Model_Pet pet;
+
+    ImageView picture;
 
     String position; // 분양 위치
     Date date; // 분양 가능 날짜
@@ -51,6 +49,7 @@ public class Model_adopt implements Serializable {
 //            this.user = (Model_User)jsonObject.getString("user");
 //            this.pet = (Model_Pet)jsonObject.getString("pet");
             this.title = jsonObject.getString("title");
+            this.price = jsonObject.getString("price");
 
         } catch (Exception e) {
             Log.d("Lettle","JSONException - " + e.toString());
@@ -74,11 +73,11 @@ public class Model_adopt implements Serializable {
         this.title = title;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -128,11 +127,12 @@ public class Model_adopt implements Serializable {
             jsonObject.put("user", this.user);
             jsonObject.put("pet", this.pet);
             jsonObject.put("title", this.title);
+            jsonObject.put("price", this.price);
 
             return jsonObject.toString();
 
         } catch (JSONException e) {
-            Log.d("Lettle","JSONException - " + e.toString());
+            Log.d(Constants.TAG,"JSONException - " + e.toString());
         }
         return null;
     }
